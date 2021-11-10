@@ -1,11 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import App from "./App";
+import LoginUser from "./components/login";
+import SignUpUser from "./components/signUpUser";
 
 
-ReactDOM.render(
-  <React.StrictMode>
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Routes>
+        <Route path="Login" element={<LoginUser />} />
+        <Route path="signUp" element={<SignUpUser />} />
+    </Routes>
+  </BrowserRouter>,
+  rootElement
 );

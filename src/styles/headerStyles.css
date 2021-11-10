@@ -1,7 +1,6 @@
 .loginHeader_banner {
     width: 100%;
     height: 8%;
-    background-color: rgb(70, 227, 255);
     top: 0px;
     left: 0%;
     position: absolute;
@@ -13,11 +12,12 @@
     top: 24%;
     width: 3%;
     height: 50%;
+    opacity: 80%;
 }
 
 
 .logo_text {
-    color: rgb(255, 0, 0);
+    color: tomato;
     position: absolute;
     top: -5%;
     font-family: Neue Haas Grotesks;
@@ -28,7 +28,7 @@
 .login_button {
     font-family: Neue Haas Grotesk;
     border-radius: 40px;
-    background-color: rgb(255, 46, 46);
+    background-color: tomato;
     color: black;
     font-size: 20px;
     width: 5%;
@@ -38,6 +38,7 @@
     padding: 0;
     border: none;
     top: 26%;
+
 }
 
 
@@ -59,9 +60,76 @@
     padding: 0;
     border: none;
     top: 26%;
+    opacity: 80%;
 }
 
 
 .signup_button:hover {
     font-size: 22px;
+}
+
+
+.SignInUserBackground {
+    font-family: Neue Haas Grotesk;
+    top: 30%;
+    right: 30%;
+    position: absolute;
+    width: 40%;
+    height: 35%;
+    background-color: rgb(244, 241, 241);
+    text-align: center;
+    border-radius: 30px;
+}
+
+.input_for_sign_in {
+    position: relative;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+
+.confirm_buttom {
+    border-radius: 30px;
+    position: absolute;
+    top: 80%;
+    left: 43%;
+    width: 100px;
+    height: 30px;
+    background-color: tomato;
+    border: none;
+    font-size: large;
+}
+
+.confirm_buttom:hover {
+    font-size: 20px;
+}
+
+
+.logout_button {
+    font-family: Neue Haas Grotesk;
+    border-radius: 40px;
+    background-color: tomato;
+    color: black;
+    font-size: 20px;
+    width: 5%;
+    height: 49%;
+    right: 1%;
+    position: absolute;
+    padding: 0;
+    border: none;
+    top: 26%;
+
+}
+
+.logout_button:hover{
+    font-size: 22px;
+}
+
+.username {
+    color: tomato;
+    position: absolute;
+    font-size: 40px;
+    top: -15%;
+    font-family: Neue Haas Grotesks;
+    right: 10%;
 }
