@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import '../styles/headerStyles.css';
 import {useNavigate} from 'react-router-dom';
-import { writeUserData, get_user_data, check_if_username_is_taken, user_is_taken_data_checker } from "./firebase";
+import { writeUserData, get_user_data, check_if_username_is_taken} from "./firebase";
+
 
 
 function check_for_invalid_characters( string ) {
@@ -27,12 +28,11 @@ function SignUpUser() {
     const navigate = useNavigate();
 
     function Add_user_account() {
-        check_if_username_is_taken(username)
-        console.log(user_is_taken_data_checker(username))
+        check_for_invalid_characters(username)
 
-       if (username !== '' && password !== '' && user_is_taken_data_checker(username) === false) {
-
-           if (user_is_taken_data_checker(username) === false) {
+       if (username !== '' && password !== '' && check_if_username_is_taken(username) === false ) {
+            console.log("made it here")
+           if (check_if_username_is_taken(username) === false) {
            writeUserData(username, password)
            get_user_data(username, password)
            navigate('/')
@@ -47,7 +47,7 @@ function SignUpUser() {
            }
 
 
-           if (user_is_taken_data_checker(username) === true) {
+           if (check_if_username_is_taken(username) === true) {
             document.getElementById('enter_username').placeholder="username taken"
             document.getElementById('enter_username').value = ""
            }

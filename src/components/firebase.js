@@ -27,7 +27,6 @@ const app = initializeApp(firebaseConfig);
 function Logout_user_in_firebase() {
   is_user_logged_on = false
   current_user = ''
-  user_is_taken_data = undefined
 }
 
 function writeUserData(username, password) {
@@ -86,31 +85,29 @@ function check_password(password) {
   }
 }
 
+var user_data = ''
 
-var user_is_taken_data = undefined
 
 function check_if_username_is_taken(username) {
+  user_data = undefined
   const db = getDatabase();
   const getUsers = ref(db, 'users/' + username);
   onValue(getUsers, (snapshot) => {
     const data = snapshot.val();
-    user_is_taken_data = data
-  });
+    user_data  = data
+});
+      if (user_data === null) {
+        return false
+      }
+      else {
+        if (user_data === undefined) {
+          return false
+        }
+        else {
+          return true
+        }
+      }
 }
-
-
-function user_is_taken_data_checker(username) {
-  check_if_username_is_taken(username)
-  check_if_username_is_taken(username)
-    if (user_is_taken_data === undefined) {
-      return true
-    }
-    if (user_is_taken_data === null) {
-      return false
-    }
-}
-
-
 
 function get_user_data(username) {
   const db = getDatabase();
@@ -121,4 +118,5 @@ function get_user_data(username) {
   });
 }
 
-export { get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, user_is_taken_data_checker, update_user_profile_image}
+
+export { get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, update_user_profile_image}
