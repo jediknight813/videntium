@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 // eslint-disable-next-line
 import { getDatabase, ref, set, onValue, update } from "firebase/database";
+import DefaultProfileImage from '../images/DefaultProfileImage.png'
 
 
 var current_user = ''
@@ -26,10 +27,12 @@ const app = initializeApp(firebaseConfig);
 function Logout_user_in_firebase() {
   is_user_logged_on = false
   current_user = ''
+  user_is_taken_data = undefined
 }
 
 function writeUserData(username, password) {
   const db = getDatabase();
+  is_user_logged_on = true
   set(ref(db, 'users/' +  username), {
     username: username,
     password: password,
@@ -37,10 +40,20 @@ function writeUserData(username, password) {
     boards: [],
     following: [],
     posts: [],
-    profile_image: ''
+    profile_image: DefaultProfileImage
 
   });
 }
+
+
+function update_user_profile_image(image) {
+  const db = getDatabase();
+  update(ref(db, 'users/' +  current_user['username']), {
+    profile_image: image,
+  });
+}
+
+
 
 function return_current_user_data() {
   return current_user
@@ -74,6 +87,31 @@ function check_password(password) {
 }
 
 
+var user_is_taken_data = undefined
+
+function check_if_username_is_taken(username) {
+  const db = getDatabase();
+  const getUsers = ref(db, 'users/' + username);
+  onValue(getUsers, (snapshot) => {
+    const data = snapshot.val();
+    user_is_taken_data = data
+  });
+}
+
+
+function user_is_taken_data_checker(username) {
+  check_if_username_is_taken(username)
+  check_if_username_is_taken(username)
+    if (user_is_taken_data === undefined) {
+      return true
+    }
+    if (user_is_taken_data === null) {
+      return false
+    }
+}
+
+
+
 function get_user_data(username) {
   const db = getDatabase();
   const getUsers = ref(db, 'users/' + username);
@@ -83,4 +121,4 @@ function get_user_data(username) {
   });
 }
 
-export { get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase}
+export { get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, user_is_taken_data_checker, update_user_profile_image}

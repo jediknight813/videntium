@@ -1,4 +1,4 @@
-import loginHeader from "./components/loginHeader";
+import loginHeader from "./components/Header";
 import React from "react";
 
 

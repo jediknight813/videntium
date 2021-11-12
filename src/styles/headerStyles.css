@@ -113,11 +113,11 @@
     font-size: 20px;
     width: 5%;
     height: 49%;
-    right: 1%;
+    right: 0.8%;
     position: absolute;
     padding: 0;
     border: none;
-    top: 26%;
+    top: 140%;
 
 }
 
@@ -127,9 +127,74 @@
 
 .username {
     color: tomato;
-    position: absolute;
+    position: relative;
     font-size: 40px;
     top: -15%;
     font-family: Neue Haas Grotesks;
     right: 10%;
+}
+
+
+.profile_image{
+    width: 80px;
+    height: 70px;
+    border-radius: 70px;
+    position: absolute;
+    top: 20%;
+    right: 1%;
+}
+
+.user_profile_image {
+    width: 140px;
+    height: 120px;
+    border-radius: 150px;
+    right: -5%;
+    top: 18%;
+    z-index: -1;
+    position: relatives;
+}
+
+.UserImageBox {
+    width: 40%;
+    height: 1%;
+    text-align: center;
+    right: 30%;
+    top: 18%;
+    position: absolute;
+
+}
+
+.profile_image_edit_button {
+    position: absolute;
+    right: 40%;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.upload_image_button {
+    display: block;
+    visibility: hidden;
+}
+
+.ShowButtonUpload {
+    position: absolute;
+    top: 200%;
+    left: 46%;
+    top: 1580%;
+    background-color: tomato;
+    border-radius: 15px;
+    border: none;
+    font-size: 17px;
+
+}
+
+.ShowButtonUpload:hover {
+    font-size: 18px;
+}
+
+
+.HideButtonUpload {
+    visibility: hidden;
 }

@@ -7,7 +7,7 @@ import {
 import App from "./App";
 import LoginUser from "./components/login";
 import SignUpUser from "./components/signUpUser";
-
+import UserPersonalProfile from "./components/UserPersonalProfile";
 
 const rootElement = document.getElementById("root");
 render(
@@ -16,6 +16,7 @@ render(
     <Routes>
         <Route path="Login" element={<LoginUser />} />
         <Route path="signUp" element={<SignUpUser />} />
+        <Route path="UserPersonalProfile" element={<UserPersonalProfile />} />
     </Routes>
   </BrowserRouter>,
   rootElement

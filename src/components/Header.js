@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 var Sidebar = <div> </div>
 
 
-function LoginHeader() {
+function Header() {
     const [count, setCount] = useState(0);
     setTimeout(() => {
         setCount(count + 1)
@@ -26,7 +26,7 @@ function LoginHeader() {
 
     function User_logged_in() {
         let data = return_current_user_data()
-        console.log(data['username'])
+        console.log(data[ 'username' ])
         const navigate = useNavigate();
 
         function Logout_user() {
@@ -37,7 +37,10 @@ function LoginHeader() {
         return(
             <div>
 
-                <h1 className="username"> {data['username']} </h1>
+                <Link to="/UserPersonalProfile">
+                    <img alt="profile_image" className="profile_image" src={data['profile_image']} />
+                </Link>
+
                 <button onClick={() => Logout_user()} className="logout_button"> logout </button>
 
             </div>
@@ -75,4 +78,4 @@ function LoginHeader() {
     );
 }
 
-export default LoginHeader
+export default Header
