@@ -15,7 +15,7 @@ function check_for_invalid_characters( string ) {
         }
     }
     else {
-        return false
+        return true
     }
 }
 
@@ -28,17 +28,16 @@ function SignUpUser() {
     const navigate = useNavigate();
 
     function Add_user_account() {
-        check_for_invalid_characters(username)
 
-       if (username !== '' && password !== '' && check_if_username_is_taken(username) === false ) {
-            console.log("made it here")
-           if (check_if_username_is_taken(username) === false) {
-           writeUserData(username, password)
-           get_user_data(username, password)
-           navigate('/')
-           }
-       }
+        if (username != null && password != null && check_for_invalid_characters(username) === false) {
 
+            if (check_if_username_is_taken(username) === false) {
+            writeUserData(username, password)
+            get_user_data(username, password)
+            navigate('/')
+            }
+        }
+    
        else {
 
            if (check_for_invalid_characters(username) === true) {
@@ -47,10 +46,12 @@ function SignUpUser() {
            }
 
 
-           if (check_if_username_is_taken(username) === true) {
-            document.getElementById('enter_username').placeholder="username taken"
-            document.getElementById('enter_username').value = ""
-           }
+           if (check_for_invalid_characters(username) === false) {
+            if (check_if_username_is_taken(username) === true) {
+                document.getElementById('enter_username').placeholder="username taken"
+                document.getElementById('enter_username').value = ""
+            }
+        }
        }
 
     }
