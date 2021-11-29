@@ -1,7 +1,9 @@
 import { initializeApp } from "firebase/app";
 // eslint-disable-next-line
-import { getDatabase, ref, set, onValue, update } from "firebase/database";
-import DefaultProfileImage from '../images/DefaultProfileImage.png'
+import { getDatabase, set, onValue, update, ref } from "firebase/database";
+import { getStorage, ref as sRef, getDownloadURL, uploadBytes } from "firebase/storage";
+import { profile_image } from "./Header";
+import { return_posts } from "./DisplayPosts";
 
 
 var current_user = ''
@@ -19,9 +21,39 @@ const firebaseConfig = {
   appId: "1:734695834748:web:5cfad6cda8b3ad600cf5f9"
 };
 
+
 // eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
+
+
+function download_image(image_name) {
+  getDownloadURL(sRef(storage, image_name))
+  .then((url) => {
+    profile_image(url)
+  })
+}
+
+
+
+function upload_file(file, file_name) {
+
+  const storageRef = sRef(storage, file_name);
+
+  uploadBytes(storageRef, file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+});
+}
+
+
+function update_profile_image(file_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  update(ref(db, 'users/' +  current_user['username']), {
+    profile_image: file_name
+  });
+}
 
 
 function Logout_user_in_firebase() {
@@ -29,34 +61,80 @@ function Logout_user_in_firebase() {
   current_user = ''
 }
 
+
+
+function addPostToUser(file_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['posts']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(file_name)
+    console.log("not a list")
+    console.log(current_user['posts'])
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(file_name)
+  }
+  update(ref(db, 'users/' +  current_user['username']), {
+      posts: post_list
+  });
+} 
+
+
+
+
+
+function makeNewPost(title, image_name, description, file_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  set(ref(db, 'posts/' +  file_name), {
+    title: title,
+    description: description,
+    image_name: image_name,
+    username: current_user['username']
+  });
+} 
+
+
+
+
 function writeUserData(username, password) {
   const db = getDatabase();
   is_user_logged_on = true
   set(ref(db, 'users/' +  username), {
     username: username,
     password: password,
-    followers: [],
-    boards: [],
-    following: [],
-    posts: [],
-    profile_image: DefaultProfileImage
+    followers: [''],
+    boards: [''],
+    following: [''],
+    posts: "x",
+    profile_image: "default_profile_image.png"
 
   });
-}
-
-
-function update_user_profile_image(image) {
-  const db = getDatabase();
-  update(ref(db, 'users/' +  current_user['username']), {
-    profile_image: image,
-  });
-}
-
+} 
 
 
 function return_current_user_data() {
   return current_user
 }
+
+
+function return_all_posts() {
+  let db = getDatabase();
+  let getPosts = ref(db, 'posts/');
+  onValue(getPosts, (snapshot) => {
+    let data = snapshot.val();
+    console.log(data)
+    return_posts(data)
+  });
+}
+
+
+
 
 
 function check_if_user_is_logged_on() {
@@ -119,4 +197,4 @@ function get_user_data(username) {
 }
 
 
-export { get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, update_user_profile_image}
+export {return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}

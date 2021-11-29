@@ -198,3 +198,44 @@
 .HideButtonUpload {
     visibility: hidden;
 }
+
+.userPostsBox {
+    position: absolute;
+    border-radius: 20px;
+    top: 45%;
+    width: 80%;
+    height: 20%;
+    right: 11%;
+    background-color: rgb(130, 130, 129);
+    text-align: center;
+}
+
+.new_post_background {
+    border-radius: 20px;
+    right: 30%;
+    width: 40%;
+    height: 70%;
+    background-color: rgb(108, 108, 108);
+    position: absolute;
+    top: 10%;
+}
+
+.new_post_button {
+    text-align: center;
+    top: 53%;
+    left: 11%;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 35px;
+    position: absolute;
+}
+
+.new_post_button:hover {
+    height: 42px;
+    width: 42px;
+}
+
