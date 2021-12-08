@@ -3,14 +3,44 @@
 .user_profile_posts {
     position: absolute;
     border-radius: 20px;
-    top: 42%;
+    top: 32%;
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(4fr);
+    grid-template: repeat(8, 1fr) / repeat(3, 1fr);
     overflow-y: scroll;
     overflow-x: hidden;
     width: 80%;
     height: 55%;
     right: 11%;
-    background-color: rgb(130, 130, 129);
     text-align: center;
+}
+
+.image_size {
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.post_background {
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 400px;
+    height: 400px;
+}
+
+.post_title {
+    position: relative;
+    top: -7.5%;
+    font-weight:900
+}
+
+.post_username {
+    position: relative;
+    top: -15%;
+    font-size: 20px;
+}
+
+.post_description {
+    position: relative;
+    top: -19%;
+    font-size: 20px;
 }

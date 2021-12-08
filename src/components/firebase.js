@@ -36,14 +36,11 @@ function download_image(image_name) {
 }
 
 
-function download_post_image(image_name) {
-  getDownloadURL(sRef(storage, image_name))
-  .then((url) => {
-    return url
-  })
-  .catch((error) => {
-    console.log(error)
-  });
+async function download_post_image(image_name) {
+  let response = await getDownloadURL(sRef(storage, image_name))
+
+  return response;
+
 }
 
 

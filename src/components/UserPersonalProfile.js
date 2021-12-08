@@ -45,7 +45,8 @@ function UserPersonalProfile() {
                     <button className="profile_image_edit_button" onClick={() => update_profile_picture()}> ✎ </button>
                     <img className="user_profile_image" alt="profile_image" src={return_profile_image()} />
                     <button onClick={() => uploadUserImage()} className={ButtonUploadClass}> upload </button>
-                    <h1> {data['username']} </h1>
+                    <h1 className="profile_username"> {data['username']} </h1>
+
                 </div>
 
 

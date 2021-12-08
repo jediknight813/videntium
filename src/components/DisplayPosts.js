@@ -7,27 +7,27 @@ import Post from "./Post";
 var all_posts = []
 
 
-async function DisplayPosts(data) {
+function DisplayPosts(data) {
     return_all_posts()
     let current_user_data  = return_current_user_data()
     all_posts = return_all_post_data()
 
 
-    const [count, setCount] = useState(0);
-    setTimeout(() => {
-        setCount(count + 1)
-      }, 1000);
+   // const [count, setCount] = useState(0);
+    //setTimeout(() => {
+    //    setCount(count + 1)
+    //  }, 1000);
 
 
     if (current_user_data['posts'] !== "x" && all_posts !== []) {
         return (
             <div className="user_profile_posts">
     
-                 { await Promise.all(current_user_data['posts'].map(async (i) => 
+                 {current_user_data['posts'].map(Element => 
                  
-                    <Post data={i} />  
+                    <Post data={all_posts[Element]} />
                  
-                 ))};
+                 )}
     
     
             </div>
