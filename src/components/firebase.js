@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, set, onValue, update, ref } from "firebase/database";
 import { getStorage, ref as sRef, getDownloadURL, uploadBytes } from "firebase/storage";
 import { profile_image } from "./Header";
-import { return_posts } from "./DisplayPosts";
+//import { return_posts } from "./DisplayPosts";
 
 
 var current_user = ''
@@ -34,6 +34,18 @@ function download_image(image_name) {
     profile_image(url)
   })
 }
+
+
+function download_post_image(image_name) {
+  getDownloadURL(sRef(storage, image_name))
+  .then((url) => {
+    return url
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+}
+
 
 
 
@@ -123,15 +135,34 @@ function return_current_user_data() {
 }
 
 
+var all_posts = []
+
 function return_all_posts() {
   let db = getDatabase();
   let getPosts = ref(db, 'posts/');
   onValue(getPosts, (snapshot) => {
     let data = snapshot.val();
-    console.log(data)
-    return_posts(data)
+    //data = Object.keys(data).map(key => (key = data[key] ));
+    all_posts = data
   });
 }
+
+
+function return_all_post_data() {
+  return all_posts
+}
+
+
+function return_current_user_posts() {
+  let db = getDatabase();
+  let getPosts = ref(db, + "users/" + current_user['username'] + '/posts/');
+  onValue(getPosts, (snapshot) => {
+    let data = snapshot.val();
+    console.log(data)
+    return data
+  });
+}
+
 
 
 
@@ -197,4 +228,4 @@ function get_user_data(username) {
 }
 
 
-export {return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
+export {download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}

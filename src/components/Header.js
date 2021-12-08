@@ -13,7 +13,6 @@ var profile_picture = ""
 
 function profile_image(image) {
     profile_picture = image
-    console.log(profile_picture)
 }
 
 

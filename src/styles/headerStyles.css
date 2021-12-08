@@ -199,12 +199,22 @@
     visibility: hidden;
 }
 
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .userPostsBox {
     position: absolute;
     border-radius: 20px;
-    top: 45%;
+    top: 42%;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(4fr);
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 80%;
-    height: 20%;
+    height: 55%;
     right: 11%;
     background-color: rgb(130, 130, 129);
     text-align: center;
@@ -222,7 +232,7 @@
 
 .new_post_button {
     text-align: center;
-    top: 53%;
+    top: 37%;
     left: 11%;
     height: 40px;
     width: 40px;
@@ -238,4 +248,3 @@
     height: 42px;
     width: 42px;
 }
-

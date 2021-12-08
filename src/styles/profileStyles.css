@@ -1,0 +1,16 @@
+
+
+.user_profile_posts {
+    position: absolute;
+    border-radius: 20px;
+    top: 42%;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(4fr);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 80%;
+    height: 55%;
+    right: 11%;
+    background-color: rgb(130, 130, 129);
+    text-align: center;
+}

@@ -1,46 +1,48 @@
-import React from "react";
-import { return_all_posts } from "./firebase";
+import React, { useState } from "react";
+import {return_all_post_data, return_current_user_data, return_all_posts } from "./firebase";
+import '../styles/profileStyles.css';
+import Post from "./Post";
 
 
 var all_posts = []
 
-function return_posts(data) {
-    const returned_data = Object.keys(data).map(key => (key = [ data[key] ] ));
-    all_posts = returned_data
-    console.log(all_posts)
-}
 
-
-function DisplayPosts(data) {
+async function DisplayPosts(data) {
     return_all_posts()
-
-    //console.log(data['data']['posts'])
-    //console.log(data['data']['postClass'])
-    //console.log(data['data']['postBackgroundClass'])
+    let current_user_data  = return_current_user_data()
+    all_posts = return_all_post_data()
 
 
-    return (
-        <div className={data['data']['postBackgroundClass']}>
-
-             {data['data']['posts'].map(items => (
-                <div className={data['data']['postClass']}>
-       
-                    <h1 className="item_text">
-                        {all_posts[items]}
-                    </h1> 
+    const [count, setCount] = useState(0);
+    setTimeout(() => {
+        setCount(count + 1)
+      }, 1000);
 
 
-                </div>  
-            ))}
+    if (current_user_data['posts'] !== "x" && all_posts !== []) {
+        return (
+            <div className="user_profile_posts">
+    
+                 { await Promise.all(current_user_data['posts'].map(async (i) => 
+                 
+                    <Post data={i} />  
+                 
+                 ))};
+    
+    
+            </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                no posts
+            </div>
+        )
+    }
 
-
-        </div>
-    )
     
 }
-
-
-export { return_posts }
 
 export default DisplayPosts
 

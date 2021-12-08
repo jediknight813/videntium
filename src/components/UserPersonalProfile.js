@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import DisplayPosts from "./DisplayPosts";
 
 
-var user_posts = ["3nszcxi4ms", "8ueiau1msb", "qe9q15sr5"]
+var user_posts = []
 
 function UserPersonalProfile() {
 
