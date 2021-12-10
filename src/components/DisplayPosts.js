@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {return_all_post_data, return_current_user_data, return_all_posts } from "./firebase";
 import '../styles/profileStyles.css';
 import Post from "./Post";

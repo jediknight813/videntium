@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // eslint-disable-next-line
-import { getDatabase, set, onValue, update, ref } from "firebase/database";
+import { getDatabase, set, onValue, update, ref, get, child, onWrite } from "firebase/database";
 import { getStorage, ref as sRef, getDownloadURL, uploadBytes } from "firebase/storage";
 import { profile_image } from "./Header";
 //import { return_posts } from "./DisplayPosts";
@@ -38,11 +38,46 @@ function download_image(image_name) {
 
 async function download_post_image(image_name) {
   let response = await getDownloadURL(sRef(storage, image_name))
-
   return response;
 
 }
 
+
+async function get__public_user_data(username) {  
+    const dbRef = ref(getDatabase());
+    var response = await get(child(dbRef, 'users/' + username.data)).then((snapshot) => {
+      if (snapshot.exists()) {
+        //console.log(snapshot.val());
+        return snapshot.val()
+
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+
+  return response
+  }
+
+
+
+  async function get_all_posts_data() {  
+    const dbRef = ref(getDatabase());
+    var response = await get(child(dbRef, 'posts/' )).then((snapshot) => {
+      if (snapshot.exists()) {
+        //console.log(snapshot.val());
+        return snapshot.val()
+
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+    
+  return response
+  }
 
 
 
@@ -139,7 +174,6 @@ function return_all_posts() {
   let getPosts = ref(db, 'posts/');
   onValue(getPosts, (snapshot) => {
     let data = snapshot.val();
-    //data = Object.keys(data).map(key => (key = data[key] ));
     all_posts = data
   });
 }
@@ -225,4 +259,4 @@ function get_user_data(username) {
 }
 
 
-export {download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
+export {get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}

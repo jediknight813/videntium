@@ -14,6 +14,20 @@
     text-align: center;
 }
 
+.front_page_posts {
+    position: absolute;
+    border-radius: 20px;
+    top: 12%;
+    display: grid;
+    grid-template: repeat(8, 1fr) / repeat(5, 1fr);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 99%;
+    height: 80%;
+    right: 0%;
+    text-align: center;
+}
+
 .image_size {
     height: 300px;
     width: 300px;
