@@ -4,12 +4,12 @@ import '../styles/profileStyles.css';
 
 
 function FrontPage(data){
-
+    console.log(data)
     var all_posts = []
 
     if (data.data !== undefined) {
-        console.log(data.data['data'])
-        for (var i in data.data) {
+        console.log(data.data['all_posts'])
+        for (var i in data.data['all_posts']) {
             all_posts.push(i)
         }
     }
@@ -19,7 +19,8 @@ function FrontPage(data){
             <div className="front_page_posts">
 
                 {all_posts.map(Element => 
-                <Post data={data.data[Element]} />
+
+                <Post data={ [ data.data['all_posts'][Element], data.data['func'].data ] } />
                 )}         
 
         </div>

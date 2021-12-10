@@ -11,7 +11,6 @@ import UserPersonalProfile from "./components/UserPersonalProfile";
 import MakeAPost from "./components/MakeAPost";
 import FetchAndDisplayUserData from "./components/fetchAndDisplayUserData"
 import GetAndDisplayFrontPageData from "./components/GetAndDisplayFrontPageData";
-import { get_current_user } from "./components/userPublicProfile";
 import { useState } from "react";
 
 
@@ -21,7 +20,7 @@ function Main() {
   
   function change_public_user(name) {
     setPublicUser(name)
-    console.log("here")
+    console.log(name)
   }
 
 
@@ -34,7 +33,7 @@ function Main() {
           <Route path="signUp" element={<SignUpUser />} />
           <Route path="UserPersonalProfile" element={<UserPersonalProfile />} />
           <Route path="makeNewPost" element={<MakeAPost />} />
-          <Route path="UserPublicProfile" element={<FetchAndDisplayUserData data={public_user} />} />
+          <Route path="UserPublicProfile" element={<FetchAndDisplayUserData data={[public_user, change_public_user]} />} />
       </Routes>
     </BrowserRouter>
   )

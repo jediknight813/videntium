@@ -6,8 +6,6 @@ import FrontPage from "./FrontPage";
 const GetAndDisplayFrontPageData = (data) => {
     const [allPosts, setAllPosts] = useState();
 
-    console.log(data.data("asd"))
-
     useEffect(() => {
       const getData = async () => {
           
@@ -22,7 +20,7 @@ const GetAndDisplayFrontPageData = (data) => {
       getData();
     }, []);
   
-    return <FrontPage data={allPosts} />
+    return <FrontPage data={data={"all_posts": allPosts, "func": data}} />
   }
 
   export default GetAndDisplayFrontPageData

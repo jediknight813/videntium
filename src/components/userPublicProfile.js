@@ -15,16 +15,17 @@ function get_current_user() {
 }
 
 
-function UserPublicProfile(data) {
+function UserPublicProfile(data) {    
     const [image, setImage] = useState()
     var user_data = undefined
     var all_posts = undefined
-    
+
     
     if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined) {
         all_posts = data.data['allPosts']
         user_data = data.data['data']
-        //console.log(data.data['allPosts'])
+        //console.log(data)
+        var func = data.data['user_to_display'].data[1]
     }
 
 
@@ -47,6 +48,9 @@ function UserPublicProfile(data) {
 
     function UserImage() {
         if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined) {
+
+
+
             return (
                 <div> 
                     <div className="UserImageBox">
@@ -58,7 +62,7 @@ function UserPublicProfile(data) {
                     <div className="user_profile_posts">
 
                         {user_data['posts'].map(Element => 
-                            <Post data={all_posts[Element]} />
+                            <Post data={[ data.data['allPosts'][Element], func]} />
                         )}        
 
                     </div>

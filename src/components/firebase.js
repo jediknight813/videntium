@@ -45,7 +45,7 @@ async function download_post_image(image_name) {
 
 async function get__public_user_data(username) {  
     const dbRef = ref(getDatabase());
-    var response = await get(child(dbRef, 'users/' + username.data)).then((snapshot) => {
+    var response = await get(child(dbRef, 'users/' + username)).then((snapshot) => {
       if (snapshot.exists()) {
         //console.log(snapshot.val());
         return snapshot.val()
