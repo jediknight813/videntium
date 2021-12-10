@@ -25,7 +25,7 @@ function DisplayPosts(data) {
     
                  {current_user_data['posts'].map(Element => 
                  
-                    <Post data={all_posts[Element]} />
+                    <Post data={[ all_posts[Element] ]} />
                  
                  )}
     

@@ -58,3 +58,22 @@
     top: -19%;
     font-size: 20px;
 }
+
+.public_follow_button {
+    position: absolute;
+    top: 1960%;
+    right: 42%;
+    width: 15%;
+    font-size: 18px;
+    font-family: Neue Haas Grotesk;
+    border-radius: 40px;
+    background-color: tomato;
+    color: black;
+    position: absolute;
+    padding: 0;
+    border: none;
+}
+
+.public_follow_button:hover {
+    font-size: 19px;
+}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Post(data) {
-    //console.log(data.data[1])
+    console.log(data)
     const [image, setImage] = useState()
     if (data !== undefined && data.data[0] !== undefined) {
 

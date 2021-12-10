@@ -4,11 +4,11 @@ import '../styles/profileStyles.css';
 
 
 function FrontPage(data){
-    console.log(data)
+    //console.log(data)
     var all_posts = []
 
     if (data.data !== undefined) {
-        console.log(data.data['all_posts'])
+        //console.log(data.data['all_posts'])
         for (var i in data.data['all_posts']) {
             all_posts.push(i)
         }

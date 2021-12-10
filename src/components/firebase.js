@@ -1,9 +1,7 @@
 import { initializeApp } from "firebase/app";
-// eslint-disable-next-line
-import { getDatabase, set, onValue, update, ref, get, child, onWrite } from "firebase/database";
+import { getDatabase, set, onValue, update, ref, get, child} from "firebase/database";
 import { getStorage, ref as sRef, getDownloadURL, uploadBytes } from "firebase/storage";
 import { profile_image } from "./Header";
-//import { return_posts } from "./DisplayPosts";
 
 
 var current_user = ''
@@ -104,6 +102,101 @@ function Logout_user_in_firebase() {
   is_user_logged_on = false
   current_user = ''
 }
+
+
+
+
+function following_user(following_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['following']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(following_name)
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(following_name)
+    //if (post_list[0] === ""){
+    //  post_list.shift()
+    //}
+
+  }
+  update(ref(db, 'users/' +  current_user['username']), {
+      following: post_list
+  });
+} 
+
+
+function Unfollow_user(following_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['following']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(following_name)
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(following_name)
+    post_list = post_list.filter(val => val !== following_name);
+    //console.log(post_list)
+
+  }
+  update(ref(db, 'users/' +  current_user['username']), {
+      following: post_list
+  });
+} 
+
+
+
+
+function add_follower(following_data) {
+  console.log("here, adding follower")
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = following_data['followers']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(current_user['username'])
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(current_user['username'])
+  }
+  update(ref(db, 'users/' +  following_data['username']), {
+      followers: post_list
+  });
+} 
+
+
+function remove_follower(following_data) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['followers']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(current_user['username'])
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(current_user['username'])
+    post_list = post_list.filter(val => val !== current_user['username']);
+    //console.log(post_list)
+
+  }
+  update(ref(db, 'users/' +  following_data['username']), {
+      followers: post_list
+  });
+} 
 
 
 
@@ -259,4 +352,4 @@ function get_user_data(username) {
 }
 
 
-export {get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
+export {remove_follower, add_follower, Unfollow_user, following_user, get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
