@@ -15,6 +15,7 @@ function FrontPage(data){
     }
 
     if (data.data !== undefined && all_posts.length > 2) {
+        all_posts.reverse();
         return (
             <div className="front_page_posts">
 

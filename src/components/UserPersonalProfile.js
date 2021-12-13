@@ -1,13 +1,32 @@
 import React, { useState } from "react";
-import { return_current_user_data, upload_file, update_profile_image} from "./firebase";
+import { return_current_user_data, upload_file, update_profile_image, check_if_user_is_logged_on} from "./firebase";
 import { return_profile_image } from "./Header";
 import { Link } from 'react-router-dom';
-import DisplayPosts from "./DisplayPosts";
+import DisplayUser from "./DisplayUser";
+import Post from "./Post";
+import { useNavigate } from "react-router-dom";
 
 
 var user_posts = []
+var reverse = false
 
-function UserPersonalProfile() {
+function UserPersonalProfile (Data) {
+    var user_data = undefined
+    var all_posts = undefined
+    //console.log(Data)
+
+    const navigate = useNavigate();
+    var check = check_if_user_is_logged_on()
+    if (check === false) {
+        navigate('/')
+    }
+
+    if (Data.data['data'] !== undefined && Data.data['allPosts'] !== undefined) {
+        all_posts = Data.data['allPosts']
+        user_data = Data.data['data']
+        var func = Data.data['user_to_display'].data[1]
+    }
+
 
     const [ButtonUploadClass, updateButtonUploadClass] = useState("HideButtonUpload")
 
@@ -19,7 +38,7 @@ function UserPersonalProfile() {
 
     function uploadUserImage() {
         var uploaded_image = document.getElementById("img")
-        console.log(uploaded_image)
+        //console.log(uploaded_image)
 
         if ( uploaded_image.files[0] !== undefined) {
 
@@ -33,37 +52,85 @@ function UserPersonalProfile() {
         }
     }
 
-    let data = return_current_user_data()
-
+    let user = return_current_user_data()
+    var data
 
     function UserImage() {
-        return (
-            <div> 
-                <div className="UserImageBox">
+        if (Data.data['allUsers'] !== undefined && Data.data['user_to_display'].data[1] !== undefined && user !== undefined && Data.data['allPosts'] !== undefined ) {
+            
+            if (Array.isArray(user['followers']) === false) {
+                user['followers'] = []
+            }
 
-                    <input className="upload_image_button" type="file" id="img" name="img" accept="image/*" /> 
-                    <button className="profile_image_edit_button" onClick={() => update_profile_picture()}> ✎ </button>
-                    <img className="user_profile_image" alt="profile_image" src={return_profile_image()} />
-                    <button onClick={() => uploadUserImage()} className={ButtonUploadClass}> upload </button>
-                    <h1 className="profile_username"> {data['username']} </h1>
+            if (Array.isArray(user['following']) === false) {
+                user['following'] = []
+            }
+
+            if (Array.isArray(user['posts']) === false) {
+                user['posts'] = []
+            }
+
+            if (reverse === false) {
+                user['following'].reverse();
+                user['followers'].reverse();
+                user['posts'].reverse();
+                reverse = true
+            }
+            
+            return (
+                <div> 
+                    <div className="UserImageBox">
+
+                        <input className="upload_image_button" type="file" id="img" name="img" accept="image/*" /> 
+                        <button className="profile_image_edit_button" onClick={() => update_profile_picture()}> ✎ </button>
+                        <img className="user_profile_image" alt="profile_image" src={return_profile_image()} />
+                        <button onClick={() => uploadUserImage()} className={ButtonUploadClass}> upload </button>
+                        <h1 className="profile_username"> {user['username']} </h1>
+
+                    </div>
+
+
+                    <h1 style={{top: "32%", position: "absolute", left: "47.2%", color: "tomato"}}> Posts </h1>
+                    <div className="user_profile_posts">
+
+                        {user['posts'].map(Element => 
+                            <Post data={[ Data.data['allPosts'][Element], func]} />
+                        )}        
+
+                    </div>
+                        <Link to="/makeNewPost">
+                            <button className="new_post_button" > + </button>
+                        </Link>
+
+                        <h1 style={{top: "83%", position: "absolute", left: "46%", color: "tomato"}}> Followers </h1>
+                        <div className="user_followers">
+
+                            {user['followers'].map(Element => 
+                                <DisplayUser data={[ Data.data['allUsers'][Element], func]} />
+                            )}        
+
+                        </div>
+
+
+                        <h1 style={{top: "113%", position: "absolute", left: "46%", color: "tomato"}}> Following </h1>
+                        <div className="user_following">
+
+                            {user['following'].map(Element => 
+                                <DisplayUser data={[ Data.data['allUsers'][Element], func]} />
+                            )}        
+
+                        </div>
 
                 </div>
+            )
 
-
-                <DisplayPosts data={data={posts: user_posts, postClass: 'postClass', postBackgroundClass: 'userPostsBox'}} />
-
-                    <Link to="/makeNewPost">
-                        <button className="new_post_button" > + </button>
-                    </Link>
-
-               
-
-            </div>
-        )
-
-    }
-
-
+        }
+        else {
+            return (
+                <div> </div>
+            )
+        }
+}
 
     return(
         <div>

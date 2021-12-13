@@ -46,15 +46,29 @@ function Header() {
             navigate("/")
         }
 
+        function to_profile() {
+            navigate("/UserPersonalProfile")
+        }
+
+        function to_create_new_post() {
+            navigate("/makeNewPost")
+        }
+
+        function to_front_page() {
+            navigate("/")
+        }
+
         return(
             <div>
 
                 <Link to="/UserPersonalProfile">
-                    <img alt="profile_image" className="profile_image" src={profile_picture} />
+                    <img alt="profile_image" className="profile_image" src={profile_picture} /> <h1 className="header_profile_name_text"> {data['username']} </h1>
                 </Link>
 
-                <button onClick={() => Logout_user()} className="logout_button"> logout </button>
-
+                <button onClick={() => Logout_user()} className="logout_button"> logout </button> <button onClick={() => to_profile()} className="header_profile_button"> profile </button>
+                <button onClick={() => to_create_new_post()} className="header_new_post_button"> create post </button>
+                <button onClick={() => to_front_page()} className="header_home_button"> home </button>
+            
             </div>
         )
     }
@@ -78,9 +92,10 @@ function Header() {
 
     return (
         <div className="loginHeader_banner"> 
-            
+
+            <div className="header_line"> </div>
             <Link to="/" >
-                <img className="website_logo" alt="logo" src={page_logo} /> <h1 className="logo_text"> Videntium </h1>
+                <h1 className="logo_text"> Videntium </h1>
             </Link>
 
             <Sidebar />

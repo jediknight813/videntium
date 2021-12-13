@@ -103,7 +103,7 @@ function upload_file(file, file_name) {
   const storageRef = sRef(storage, file_name);
 
   uploadBytes(storageRef, file).then((snapshot) => {
-  console.log('Uploaded a blob or file!');
+  //console.log('Uploaded a blob or file!');
 });
 }
 
@@ -175,7 +175,7 @@ function Unfollow_user(following_name) {
 
 
 function add_follower(following_data) {
-  console.log("here, adding follower")
+  //console.log("here, adding follower")
   const db = getDatabase();
   is_user_logged_on = true
   let post_list = []
@@ -227,8 +227,8 @@ function addPostToUser(file_name) {
 
   if (Array.isArray(x) === false) {
     post_list.push(file_name)
-    console.log("not a list")
-    console.log(current_user['posts'])
+    //console.log("not a list")
+    //console.log(current_user['posts'])
   }
   else {
     post_list = []
@@ -301,7 +301,7 @@ function return_current_user_posts() {
   let getPosts = ref(db, + "users/" + current_user['username'] + '/posts/');
   onValue(getPosts, (snapshot) => {
     let data = snapshot.val();
-    console.log(data)
+    //console.log(data)
     return data
   });
 }

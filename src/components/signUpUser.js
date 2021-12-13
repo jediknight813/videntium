@@ -59,13 +59,13 @@ function SignUpUser() {
 
     return (
         <div className="SignInUserBackground">
-            <h1> create account </h1>
+            <h1 style={{color: "tomato"}} > create account </h1>
             
-            <h3> enter username </h3>
+            <h3 tyle={{color: "tomato"}} > enter username </h3>
             <input id="enter_username" onChange={event => setUsername(event.target.value)} className="input_for_sign_in" placeholder="username" type="email" />
 
 
-            <h3> enter password </h3>
+            <h3 tyle={{color: "tomato"}} > enter password </h3>
             <input onChange={event => setPassword(event.target.value)}  className="input_for_sign_in" placeholder="password" type="password" />
 
             <button onClick={() => Add_user_account()} className="confirm_buttom" > confirm </button>

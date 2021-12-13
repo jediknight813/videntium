@@ -9,8 +9,6 @@ function DisplayUser(data) {
     const [image, setImage] = useState()
     if (data !== undefined && data.data[0] !== undefined) {
 
-    console.log(data.data[0]['username'])
-
         if (data.data[0]['profile_image'] !== undefined && data.data[0] !== undefined) {
             download_post_image(data.data[0]['profile_image']).then(
                 function(value) { 

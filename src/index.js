@@ -12,7 +12,7 @@ import MakeAPost from "./components/MakeAPost";
 import FetchAndDisplayUserData from "./components/fetchAndDisplayUserData"
 import GetAndDisplayFrontPageData from "./components/GetAndDisplayFrontPageData";
 import { useState } from "react";
-
+import GetDataForPersonalProfile from "./components/getDataForPersonalProfile";
 
 
 function Main() {
@@ -31,7 +31,7 @@ function Main() {
           <Route path="" element={<GetAndDisplayFrontPageData data={change_public_user} />} />
           <Route path="Login" element={<LoginUser />} />
           <Route path="signUp" element={<SignUpUser />} />
-          <Route path="UserPersonalProfile" element={<UserPersonalProfile />} />
+          <Route path="UserPersonalProfile" element={<GetDataForPersonalProfile data={[public_user, change_public_user]}  />} />
           <Route path="makeNewPost" element={<MakeAPost />} />
           <Route path="UserPublicProfile" element={<FetchAndDisplayUserData data={[public_user, change_public_user]} />} />
       </Routes>

@@ -64,6 +64,7 @@
     height: 300px;
     width: 300px;
     border-radius: 10px;
+    border: 3px solid rgb(252, 115, 115);
 }
 
 .post_background {
@@ -74,9 +75,10 @@
 }
 
 .post_title {
+    color: tomato;
     position: relative;
     top: -7.5%;
-    font-weight:900
+    font-weight: 900;
 }
 
 .post_username {
@@ -85,32 +87,35 @@
     font-size: 20px;
     background-color: transparent;
     text-decoration: none;
+    color: tomato;
 }
 
 .post_username:link {
     text-decoration: none;
     background-color: transparent;
+    color: tomato;
 }
 
 .post_description {
     position: relative;
     top: -19%;
     font-size: 20px;
+    color: tomato;
 }
 
 .public_follow_button {
     position: absolute;
-    top: 1960%;
+    top: 2050%;
     right: 42%;
     width: 15%;
     font-size: 18px;
     font-family: Neue Haas Grotesk;
     border-radius: 40px;
-    background-color: tomato;
-    color: black;
+    border: 3px solid rgb(252, 115, 115);
+    background-color: white;
+    color: tomato;
     position: absolute;
     padding: 0;
-    border: none;
 }
 
 .public_follow_button:hover {
@@ -123,6 +128,7 @@
     height: 80px;
     width: 80px;
     border-radius: 50px;
+    border: 3px solid rgb(252, 115, 115);
 }
 
 .user_post_background {

@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import '../styles/headerStyles.css';
-import { addPostToUser, makeNewPost, upload_file } from "./firebase";
+import { addPostToUser, makeNewPost, upload_file, check_if_user_is_logged_on } from "./firebase";
 import {useNavigate} from 'react-router-dom';
 
 
 function MakeAPost() {
     const [title, SetTitle] = useState('')
     const [description, SetDescription] = useState('')
+
+    const [file, setFile] = React.useState(null)
+        
+    const fileHandler = (e) => {
+        setFile(e.target.files[0])
+    }
+
+
     const navigate = useNavigate();
+    var check = check_if_user_is_logged_on()
+    if (check === false) {
+        navigate('/')
+    }
 
 
     function submitPost() {
@@ -19,29 +31,29 @@ function MakeAPost() {
             upload_file(uploaded_image.files[0], image_name)
             addPostToUser(file_name)
             makeNewPost(title, image_name, description, file_name)
-            navigate('/UserPersonalProfile')
+            navigate('/')
         }
     }
 
 
     return (
         <div> 
-
-
+            <h1 style={{position: "absolute", color: "tomato", right: "47%", top:"13% "}}> create post </h1>
             <div className="new_post_background"> 
-            
-            <input type="text" onChange={event => SetTitle(event.target.value)} placeholder="title" /> 
 
-            <input type="text" onChange={event => SetDescription(event.target.value)} placeholder="description" /> 
+                <img id="myimage" className="new_post_image" src={file? URL.createObjectURL(file) : null} alt={file? file.name : null}/>
 
-            <input type="file" id="image" accept="image/*" />
+                <input className="create_post_title_input" type="text" onChange={event => SetTitle(event.target.value)} placeholder="title" /> 
 
-            <button onClick={() => submitPost()}> submit </button>
+                <input className="create_post_disc_input" type="text" onChange={event => SetDescription(event.target.value)} placeholder="description" /> 
+
+                <input onChange={fileHandler} className="custom-file-input" type="file" id="image" accept="image/*" />
+
+                <button className="submit_post" onClick={() => submitPost()}> post </button>
 
 
             </div>
             
-        
         </div>
     );
 }

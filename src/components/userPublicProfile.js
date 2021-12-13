@@ -3,7 +3,7 @@ import Post from "./Post";
 import { return_current_user_data, download_post_image } from "./firebase";
 import {useNavigate} from 'react-router-dom';
 import '../styles/profileStyles.css'
-import { following_user, Unfollow_user, add_follower, remove_follower } from "./firebase";
+import { following_user, Unfollow_user, add_follower, remove_follower, check_if_user_is_logged_on } from "./firebase";
 import DisplayUser from "./DisplayUser";
 
 
@@ -24,6 +24,13 @@ function UserPublicProfile(data) {
     var user_data = undefined
     var all_posts = undefined
     var username = ""
+
+
+    const navigate = useNavigate();
+    var check = check_if_user_is_logged_on()
+    if (check === false) {
+        navigate('/')
+    }
     
     if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined) {
         all_posts = data.data['allPosts']
@@ -32,8 +39,6 @@ function UserPublicProfile(data) {
         username = user_data['username']
     }
 
-
-    const navigate = useNavigate();
 
     let check_if_user = return_current_user_data()
     
@@ -74,6 +79,8 @@ function UserPublicProfile(data) {
         );
     }
 
+    var reverse = false
+
     function UserImage() {
         if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined && data.data['allUsers'] !== undefined) {
             if (user_data['followers'].includes(check_if_user['username'])){
@@ -84,8 +91,19 @@ function UserPublicProfile(data) {
                 user_data['followers'] = []
             }
 
+            if (Array.isArray(user_data['following']) === false) {
+                user_data['following'] = []
+            }
+
             if (Array.isArray(user_data['posts']) === false) {
                 user_data['posts'] = []
+            }
+
+            if (reverse === false) {
+                user_data['posts'].reverse();
+                user_data['followers'].reverse();
+                user_data['following'].reverse();
+                reverse = true
             }
 
             return (

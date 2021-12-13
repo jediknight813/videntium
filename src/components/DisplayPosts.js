@@ -19,13 +19,16 @@ function DisplayPosts(data) {
     //  }, 1000);
 
 
-    if (current_user_data['posts'] !== "x" && all_posts !== []) {
+    if (current_user_data['posts'] !== "x" && all_posts !== [] && data.data.posts['all_posts'] !== undefined) {
+        current_user_data['posts'].reverse();
+        //console.log(data.data.posts['all_posts'])
+        //console.log(all_posts)
         return (
             <div className="user_profile_posts">
     
-                 {current_user_data['posts'].map(Element => 
+                 {data.data.posts['posts'].map(Element => 
                  
-                    <Post data={[ all_posts[Element] ]} />
+                    <Post data={[ data.data.posts['all_posts'][Element] ]} />
                  
                  )}
     
