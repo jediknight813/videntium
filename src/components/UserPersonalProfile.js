@@ -76,6 +76,16 @@ function UserPersonalProfile (Data) {
                 user['posts'].reverse();
                 reverse = true
             }
+
+            function arrayRemove(arr, value) { 
+    
+                return arr.filter(function(ele){ 
+                    return ele != value; 
+                });
+            }
+
+            user['following'] = arrayRemove(user['following'], "");
+            user['followers'] = arrayRemove(user['following'], "");
             
             return (
                 <div> 

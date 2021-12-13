@@ -18,7 +18,10 @@ function DisplayUser(data) {
         }
     }
 
-    if (data.data[0] !== undefined ) {
+    
+    if (data.data[0] !== undefined) {
+        
+
         return ( 
             <div key={data.data[0]['profile_image']} className="user_post_background">
                 <img className="user_image_size" alt={image} src={image} />

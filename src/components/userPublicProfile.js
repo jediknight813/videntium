@@ -8,6 +8,7 @@ import DisplayUser from "./DisplayUser";
 
 
 var current_user = "asd"
+var following_check = false
 
 function change_current_user(name) {
     current_user = name
@@ -25,6 +26,7 @@ function UserPublicProfile(data) {
     var all_posts = undefined
     var username = ""
 
+    
 
     const navigate = useNavigate();
     var check = check_if_user_is_logged_on()
@@ -51,20 +53,22 @@ function UserPublicProfile(data) {
 
     const [buttonText, setButtonText] = useState("Follow")
 
-    
-    function follow_or_unfollow_user() {
-        if (buttonText === "Follow") {
-            following_user(user_data['username'])
-            add_follower(user_data)
-            setButtonText("Unfollow")
-            return
 
-        }
-        else {
+    function follow_or_unfollow_user() {
+        
+        if (buttonText === "Unfollow") {
+            setButtonText("Follow")
             Unfollow_user(user_data['username'])
             remove_follower(user_data)
-            setButtonText("Follow")
-            return
+            return "finished"
+        }
+
+        else {
+            setButtonText("Unfollow")
+            following_user(user_data['username'])
+            add_follower(user_data)
+            return "finishde"
+
         }
 
     }
@@ -80,11 +84,13 @@ function UserPublicProfile(data) {
     }
 
     var reverse = false
-
+  
     function UserImage() {
         if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined && data.data['allUsers'] !== undefined) {
-            if (user_data['followers'].includes(check_if_user['username'])){
+            if (user_data['followers'].includes(check_if_user['username']) && following_check === false){
                 setButtonText("Unfollow")
+                following_check = true
+                console.log("its reseting")
             }
 
             if (Array.isArray(user_data['followers']) === false) {

@@ -79,7 +79,7 @@
 
 .SignInUserBackground {
     font-family: Neue Haas Grotesk;
-    top: 30%;
+    top: 35%;
     right: 30%;
     position: absolute;
     width: 40%;
@@ -88,6 +88,8 @@
     text-align: center;
     border-radius: 30px;
     color: tomato;
+    z-index: 8;
+    background-color: white;
 }
 
 .input_for_sign_in {
@@ -449,4 +451,66 @@
     height: 45%;
     border: 3px solid rgb(252, 115, 115);
     border-radius: 4px;
+}
+
+.make_user_sign_in {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    height: 1150%;
+    z-index: 2;
+    opacity: 99%;
+    background-color: rgb(34, 31, 31);
+    color: tomato;
+    font-size: 50px;
+    text-align: center;
+}
+
+.make_user_sign_up_text {
+    top: 20%;
+    color: tomato;
+    font-size: 80px;
+}
+
+.force_user_signin_button {
+    font-family: Neue Haas Grotesk;
+    border-radius: 40px;
+    border: 3px solid rgb(252, 115, 115);
+    background-color: white;
+    color: tomato;
+    font-size: 20px;
+    width: 5%;
+    height: 4%;
+    right: 52%;
+    position: absolute;
+    padding: 0;
+    top: 20%;
+    overflow-x: hidden;
+
+}
+
+
+.force_user_signin_button:hover {
+    font-size: 22px;
+}
+
+.force_user_login_button {
+    font-family: Neue Haas Grotesk;
+    border-radius: 40px;
+    border: 3px solid rgb(252, 115, 115);
+    background-color: white;
+    color: tomato;
+    font-size: 20px;
+    width: 5%;
+    height: 4%;
+    right: 45%;
+    position: absolute;
+    padding: 0;
+    top: 20%;
+    overflow-x: hidden;
+
+}
+
+.force_user_login_button:hover {
+    font-size: 22px;
 }
