@@ -78,6 +78,25 @@ async function get__public_user_data(username) {
   }
 
 
+  async function get_all_users_data() {  
+    const dbRef = ref(getDatabase());
+    var response = await get(child(dbRef, 'users/' )).then((snapshot) => {
+      if (snapshot.exists()) {
+        //console.log(snapshot.val());
+        return snapshot.val()
+
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+    
+  return response
+  }
+
+
+
 
 function upload_file(file, file_name) {
 
@@ -352,4 +371,4 @@ function get_user_data(username) {
 }
 
 
-export {remove_follower, add_follower, Unfollow_user, following_user, get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
+export {get_all_users_data, remove_follower, add_follower, Unfollow_user, following_user, get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}

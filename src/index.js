@@ -20,7 +20,7 @@ function Main() {
   
   function change_public_user(name) {
     setPublicUser(name)
-    console.log(name)
+    //console.log(name)
   }
 
 

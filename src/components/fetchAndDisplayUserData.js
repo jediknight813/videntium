@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import UserPublicProfile from "./userPublicProfile";
-import { get__public_user_data, get_all_posts_data } from "./firebase";
+import { get__public_user_data, get_all_posts_data, get_all_users_data } from "./firebase";
 
 
 const FetchAndDisplayUserData = (user_to_display) => {
@@ -8,6 +8,8 @@ const FetchAndDisplayUserData = (user_to_display) => {
     //console.log(name)
     const [data, updateData] = useState();
     const [allPosts, setAllPosts] = useState();
+    const [allUsers, SetAllUsers] = useState();
+
     var sending
 
     useEffect(() => {
@@ -28,12 +30,19 @@ const FetchAndDisplayUserData = (user_to_display) => {
             }
         )
 
+        const users = await get_all_users_data().then(
+          function(value) {
+              SetAllUsers(value);
+              //console.log(value)
+          }
+      )
+
       }
       getData();
     }, [user_to_display]);
 
 
-    return <UserPublicProfile data={sending={allPosts, data, user_to_display}} />
+    return <UserPublicProfile data={sending={allPosts, data, user_to_display, allUsers}} />
   }
 
   export default FetchAndDisplayUserData

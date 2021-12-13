@@ -2,16 +2,48 @@
 
 .user_profile_posts {
     position: absolute;
-    border-radius: 20px;
-    top: 32%;
+    border-radius: 8px;
+    top: 38%;
     display: grid;
-    grid-template: repeat(8, 1fr) / repeat(3, 1fr);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 80%;
-    height: 55%;
-    right: 11%;
+    grid-template: repeat(1, 1fr) / repeat(10, 1fr);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 91%;
+    height: 45%;
+    right: 5%;
     text-align: center;
+    border: 5px solid rgb(252, 115, 115);
+}
+
+
+.user_followers{
+    position: absolute;
+    border-radius: 8px;
+    top: 90%;
+    display: grid;
+    grid-template: repeat(1, 1fr) / repeat(10, 1fr);
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 85%;
+    height: 15%;
+    right: 7%;
+    text-align: center;
+    border: 5px solid rgb(252, 115, 115);
+}
+
+.user_following {
+    position: absolute;
+    border-radius: 8px;
+    top: 120%;
+    display: grid;
+    grid-template: repeat(1, 1fr) / repeat(10, 1fr);
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 85%;
+    height: 15%;
+    right: 7%;
+    text-align: center;
+    border: 5px solid rgb(252, 115, 115);
 }
 
 .front_page_posts {
@@ -51,6 +83,13 @@
     position: relative;
     top: -15%;
     font-size: 20px;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.post_username:link {
+    text-decoration: none;
+    background-color: transparent;
 }
 
 .post_description {
@@ -76,4 +115,19 @@
 
 .public_follow_button:hover {
     font-size: 19px;
+}
+
+
+
+.user_image_size {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+}
+
+.user_post_background {
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 140px;
+    height: 120px;
 }

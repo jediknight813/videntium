@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Post(data) {
-    console.log(data)
+    //console.log(data)
     const [image, setImage] = useState()
     if (data !== undefined && data.data[0] !== undefined) {
 
@@ -20,6 +20,7 @@ function Post(data) {
         }
     }
 
+    if (data.data[0] !== undefined) {
     return ( 
         <div key={data.data[0]['image_name']} className="post_background">
             <img className="image_size" alt={image} src={image} />
@@ -32,6 +33,10 @@ function Post(data) {
             <h1 className="post_description"> {data.data[0]['description']} </h1>
         </div>
     )
+    }
+    else {
+        return <div> </div>
+    }
 
 }
 
