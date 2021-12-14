@@ -140,10 +140,6 @@ function following_user(following_name) {
     post_list = []
     x.forEach((element) => { post_list.push(element) } )
     post_list.push(following_name)
-    //if (post_list[0] === ""){
-    //  post_list.shift()
-    //}
-
   }
   update(ref(db, 'users/' +  current_user['username']), {
       following: post_list
@@ -171,8 +167,49 @@ function Unfollow_user(following_name) {
   update(ref(db, 'users/' +  current_user['username']), {
       following: post_list
   });
+}
+
+
+
+function unsave_post_to_user(post_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['saved_posts']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(post_name)
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(post_name)
+    post_list = post_list.filter(val => val !== post_name);
+
+  }
+  update(ref(db, 'users/' +  current_user['username']), {
+      saved_posts: post_list
+  });
 } 
 
+function save_post_to_user(post_name) {
+  const db = getDatabase();
+  is_user_logged_on = true
+  let post_list = []
+  let x = current_user['saved_posts']
+
+  if (Array.isArray(x) === false) {
+    post_list.push(post_name)
+  }
+  else {
+    post_list = []
+    x.forEach((element) => { post_list.push(element) } )
+    post_list.push(post_name)
+  }
+  update(ref(db, 'users/' +  current_user['username']), {
+      saved_posts: post_list
+  });
+} 
 
 
 
@@ -269,6 +306,7 @@ function writeUserData(username, password) {
     followers: [''],
     boards: [''],
     following: [''],
+    saved_posts: [''],
     posts: "x",
     profile_image: "default_profile_image.png"
 
@@ -373,4 +411,4 @@ function get_user_data(username) {
 }
 
 
-export {get_all_users_data, remove_follower, add_follower, Unfollow_user, following_user, get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}
+export {save_post_to_user, unsave_post_to_user, get_all_users_data, remove_follower, add_follower, Unfollow_user, following_user, get_all_posts_data, get__public_user_data, download_post_image, return_all_post_data, return_current_user_posts, return_all_posts, addPostToUser, makeNewPost, update_profile_image, download_image, get_user_data, writeUserData, check_password, check_if_user_is_logged_on, return_current_user_data, Logout_user_in_firebase, check_if_username_is_taken, upload_file}

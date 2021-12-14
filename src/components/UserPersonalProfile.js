@@ -82,6 +82,7 @@ function UserPersonalProfile (Data) {
 
             user['following'] = arrayRemove(user['following'], "");
             user['followers'] = arrayRemove(user['followers'], "");
+            user['saved_posts'] = arrayRemove(user['saved_posts'], "");
 
             
             return (
@@ -99,7 +100,7 @@ function UserPersonalProfile (Data) {
                     <div className="user_profile_posts">
 
                         {user['posts'].map(Element => 
-                            <Post data={[ Data.data['allPosts'][Element], func]} />
+                            <Post data={[ Data.data['allPosts'][Element], func, Element, user['saved_posts']]} />
                         )}        
 
                     </div>
@@ -107,17 +108,30 @@ function UserPersonalProfile (Data) {
                             <button className="new_post_button" > + </button>
                         </Link>
 
-                        <h1 style={{top: "83%", position: "absolute", left: "46%", color: "tomato"}}> Followers </h1>
+
+
+                    <h1 style={{top: "86%", position: "absolute", left: "44.6%", color: "tomato"}}> Saved Posts </h1>
+                    <div className="user_saved_profile_posts">
+
+                        {user['saved_posts'].map(Element => 
+                            <Post data={[ Data.data['allPosts'][Element], func, Element, user['saved_posts']]} />
+                        )}        
+
+                    </div>
+
+                    
+
+                        <h1 style={{top: "141%", position: "absolute", left: "46%", color: "tomato"}}> Followers </h1>
                         <div className="user_followers">
 
                             {user['followers'].map(Element => 
-                                <DisplayUser data={[ Data.data['allUsers'][Element], func]} />
+                                <DisplayUser data={[ Data.data['allUsers'][Element], func, ]} />
                             )}        
 
                         </div>
 
 
-                        <h1 style={{top: "113%", position: "absolute", left: "46%", color: "tomato"}}> Following </h1>
+                        <h1 style={{top: "168%", position: "absolute", left: "46%", color: "tomato"}}> Following </h1>
                         <div className="user_following">
 
                             {user['following'].map(Element => 

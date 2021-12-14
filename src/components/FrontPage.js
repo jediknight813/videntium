@@ -21,7 +21,7 @@ function FrontPage(data){
 
                 {all_posts.map(Element => 
 
-                <Post data={ [ data.data['all_posts'][Element], data.data['func'].data ] } />
+                <Post data={ [ data.data['all_posts'][Element], data.data['func'].data, Element ] } />
                 )}         
 
         </div>

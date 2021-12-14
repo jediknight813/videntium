@@ -127,7 +127,7 @@ function UserPublicProfile(data) {
 
             user_data['following'] = arrayRemove(user_data['following'], "");
             user_data['followers'] = arrayRemove(user_data['followers'], "");
-            
+            user_data['saved_posts'] = arrayRemove(user_data['saved_posts'], "");
 
             return (
                 <div> 
@@ -141,12 +141,22 @@ function UserPublicProfile(data) {
                     <div className="user_profile_posts">
 
                         {user_data['posts'].map(Element => 
-                            <Post data={[ data.data['allPosts'][Element], func]} />
+                            <Post data={[ data.data['allPosts'][Element], func, Element, user_data['saved_posts']]} />
+                        )}        
+
+                    </div>
+
+
+                    <h1 style={{top: "86%", position: "absolute", left: "44.6%", color: "tomato"}}> Saved Posts </h1>
+                    <div className="user_saved_profile_posts">
+
+                        {user_data['saved_posts'].map(Element => 
+                            <Post data={[ data.data['allPosts'][Element], func, Element, user_data['saved_posts']]} />
                         )}        
 
                     </div>
                     
-                    <h1 style={{top: "83%", position: "absolute", left: "46%", color: "tomato"}}> Followers </h1>
+                    <h1 style={{top: "141%", position: "absolute", left: "46%", color: "tomato"}}> Followers </h1>
                     <div className="user_followers">
 
                         {user_data['followers'].map(Element => 
@@ -156,7 +166,7 @@ function UserPublicProfile(data) {
                     </div>
 
 
-                    <h1 style={{top: "113%", position: "absolute", left: "46%", color: "tomato"}}> Following </h1>
+                    <h1 style={{top: "168%", position: "absolute", left: "46%", color: "tomato"}}> Following </h1>
                     <div className="user_following">
 
                         {user_data['following'].map(Element => 

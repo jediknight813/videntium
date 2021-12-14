@@ -409,7 +409,8 @@ visibility: hidden;
     height: 8%;
     position: absolute;
 }
-  
+
+
   .custom-file-input::before {
     content: 'select image';
     text-align: center;

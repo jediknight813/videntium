@@ -26,7 +26,7 @@ function DisplayUser(data) {
             <div key={data.data[0]['profile_image']} className="user_post_background">
                 <img className="user_image_size" alt={image} src={image} />
                 <Link to="/UserPublicProfile">
-                    <h1 onClick={() => data.data[1](data.data[0]['username'])} className="post_username">  {data.data[0]['username']} </h1>
+                    <h1 onClick={() => data.data[1](data.data[0]['username'])} className="post_username_for_follower">  {data.data[0]['username']} </h1>
                 </Link>
             </div>
         )

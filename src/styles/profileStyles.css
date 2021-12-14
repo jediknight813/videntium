@@ -15,11 +15,27 @@
     border: 5px solid rgb(252, 115, 115);
 }
 
+.user_saved_profile_posts {
+    position: absolute;
+    border-radius: 8px;
+    top: 92%;
+    display: grid;
+    grid-template: repeat(1, 1fr) / repeat(10, 1fr);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 91%;
+    height: 45%;
+    right: 5%;
+    text-align: center;
+    border: 5px solid rgb(252, 115, 115);
+}
+
+
 
 .user_followers{
     position: absolute;
     border-radius: 8px;
-    top: 90%;
+    top: 148%;
     display: grid;
     grid-template: repeat(1, 1fr) / repeat(10, 1fr);
     overflow-y: hidden;
@@ -34,7 +50,7 @@
 .user_following {
     position: absolute;
     border-radius: 8px;
-    top: 120%;
+    top: 175%;
     display: grid;
     grid-template: repeat(1, 1fr) / repeat(10, 1fr);
     overflow-y: hidden;
@@ -83,10 +99,23 @@
 
 .post_username {
     position: relative;
-    top: -15%;
+    top: -23%;
     font-size: 20px;
     background-color: transparent;
     text-decoration: none;
+    color: tomato;
+}
+.post_username_for_follower {
+    position: relative;
+    top: -17%;
+    font-size: 20px;
+    background-color: transparent;
+    text-decoration: none;
+    color: tomato;
+}
+.post_username_for_follower:link {
+    text-decoration: none;
+    background-color: transparent;
     color: tomato;
 }
 
@@ -98,7 +127,7 @@
 
 .post_description {
     position: relative;
-    top: -19%;
+    top: -26%;
     font-size: 20px;
     color: tomato;
 }
@@ -137,3 +166,25 @@
     width: 140px;
     height: 120px;
 }
+
+
+.save_button {
+    top: -25%;
+    left: 28%;
+    position: relative;
+    color: tomato;
+    background-color: white;
+    border-radius: 10px;
+    width: 18%;
+    height: 6%;
+    border: 3px solid tomato;
+    text-align: center;
+    line-height: 5%;
+    font-size: large;
+}
+
+.save_button:hover {
+    font-size: 16px;
+    font-size: 17px;
+}
+
