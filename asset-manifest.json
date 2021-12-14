@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/jediknight813/videntium/static/css/main.0cfc563b.chunk.css",
+    "main.js": "/jediknight813/videntium/static/js/main.e59f87e7.chunk.js",
+    "main.js.map": "/jediknight813/videntium/static/js/main.e59f87e7.chunk.js.map",
+    "runtime-main.js": "/jediknight813/videntium/static/js/runtime-main.b1bac9c9.js",
+    "runtime-main.js.map": "/jediknight813/videntium/static/js/runtime-main.b1bac9c9.js.map",
+    "static/js/2.48b3205e.chunk.js": "/jediknight813/videntium/static/js/2.48b3205e.chunk.js",
+    "static/js/2.48b3205e.chunk.js.map": "/jediknight813/videntium/static/js/2.48b3205e.chunk.js.map",
+    "index.html": "/jediknight813/videntium/index.html",
+    "static/css/main.0cfc563b.chunk.css.map": "/jediknight813/videntium/static/css/main.0cfc563b.chunk.css.map",
+    "static/js/2.48b3205e.chunk.js.LICENSE.txt": "/jediknight813/videntium/static/js/2.48b3205e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1bac9c9.js",
+    "static/js/2.48b3205e.chunk.js",
+    "static/css/main.0cfc563b.chunk.css",
+    "static/js/main.e59f87e7.chunk.js"
+  ]
+}
