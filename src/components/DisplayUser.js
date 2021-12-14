@@ -19,7 +19,7 @@ function DisplayUser(data) {
     }
 
     
-    if (data.data[0] !== undefined) {
+    if (data.data[0] !== undefined && data.data[1] !== undefined) {
         
 
         return ( 

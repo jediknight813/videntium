@@ -26,7 +26,7 @@ function Main() {
 
   return (
     <BrowserRouter>
-      <App />
+      <App data={change_public_user} />
       <Routes>
           <Route path="" element={<GetAndDisplayFrontPageData data={change_public_user} />} />
           <Route path="Login" element={<LoginUser />} />

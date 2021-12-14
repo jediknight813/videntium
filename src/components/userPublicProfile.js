@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import { return_current_user_data, download_post_image } from "./firebase";
 import {useNavigate} from 'react-router-dom';
 import '../styles/profileStyles.css'
-import { following_user, Unfollow_user, add_follower, remove_follower, check_if_user_is_logged_on } from "./firebase";
+import { following_user, Unfollow_user, add_follower, remove_follower, check_if_user_is_logged_on, get__public_user_data } from "./firebase";
 import DisplayUser from "./DisplayUser";
+import FetchAndDisplayUserData from "./fetchAndDisplayUserData";
 
 
 var current_user = "asd"
@@ -33,6 +34,9 @@ function UserPublicProfile(data) {
     if (check === false) {
         navigate('/')
     }
+
+
+    
     
     if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined) {
         all_posts = data.data['allPosts']
@@ -43,6 +47,8 @@ function UserPublicProfile(data) {
 
 
     let check_if_user = return_current_user_data()
+
+
     
     //check if user is following
     // if user is following have unfollow action, else have follow action
@@ -60,22 +66,21 @@ function UserPublicProfile(data) {
             setButtonText("Follow")
             Unfollow_user(user_data['username'])
             remove_follower(user_data)
-            return "finished"
+            navigate("/")
+            navigate("/UserPublicProfile")
         }
 
         else {
             setButtonText("Unfollow")
             following_user(user_data['username'])
             add_follower(user_data)
-            return "finishde"
-
+            navigate("/")
+            navigate("/UserPublicProfile")
         }
 
     }
 
     if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined) {
-            //checks if you are following the user
-
         download_post_image(user_data['profile_image']).then(
             function(value) { 
             setImage(value)
@@ -86,10 +91,11 @@ function UserPublicProfile(data) {
     var reverse = false
   
     function UserImage() {
-        if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined && data.data['allUsers'] !== undefined) {
-            if (user_data['followers'].includes(check_if_user['username']) && following_check === false){
+        if (data.data['data'] !== undefined && data.data['allPosts'] !== undefined && data.data['allUsers'] !== undefined && user_data !== undefined) {
+            
+            
+            if (user_data['followers'].includes(check_if_user['username'])){
                 setButtonText("Unfollow")
-                following_check = true
                 console.log("its reseting")
             }
 
@@ -111,6 +117,17 @@ function UserPublicProfile(data) {
                 user_data['following'].reverse();
                 reverse = true
             }
+
+            function arrayRemove(arr, value) { 
+    
+                return arr.filter(function(ele){ 
+                    return ele !== value; 
+                });
+            }
+
+            user_data['following'] = arrayRemove(user_data['following'], "");
+            user_data['followers'] = arrayRemove(user_data['followers'], "");
+            
 
             return (
                 <div> 

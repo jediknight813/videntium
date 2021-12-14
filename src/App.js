@@ -6,7 +6,7 @@ var is_user_logged_in = false
 var Header = null
 
 
-function App() {
+function App(Data) {
   if (is_user_logged_in === false) {
       Header = loginHeader
   }
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div >
-      <Header />
+      <Header data={Data} />
     </div>
   );
 }

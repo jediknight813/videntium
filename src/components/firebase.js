@@ -120,6 +120,8 @@ function update_profile_image(file_name) {
 function Logout_user_in_firebase() {
   is_user_logged_on = false
   current_user = ''
+  all_posts = []
+  user_data = ''
 }
 
 

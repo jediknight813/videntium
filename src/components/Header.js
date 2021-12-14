@@ -20,7 +20,8 @@ function return_profile_image() {
     return profile_picture
 }
 
-function Header() {
+function Header(Data) {
+    var func = Data.data.data
     const [count, setCount] = useState(0);
     setTimeout(() => {
         setCount(count + 1)
@@ -44,10 +45,12 @@ function Header() {
         function Logout_user() {
             Logout_user_in_firebase()
             navigate("/")
+            window.location.reload()
         }
 
         function to_profile() {
-            navigate("/UserPersonalProfile")
+            func(data['username'])
+            navigate("/UserPublicProfile")
         }
 
         function to_create_new_post() {

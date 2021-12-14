@@ -9,7 +9,7 @@ const GetDataForPersonalProfile = (user_to_display) => {
     const [data, updateData] = useState();
     const [allPosts, setAllPosts] = useState();
     const [allUsers, SetAllUsers] = useState();
-
+    const [update, forceUpdate] = useState();
     var sending
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const GetDataForPersonalProfile = (user_to_display) => {
     }, [user_to_display]);
 
 
-    return <UserPersonalProfile data={sending={allPosts, data, user_to_display, allUsers}} />
+    return <UserPersonalProfile data={sending={allPosts, data, user_to_display, allUsers, forceUpdate}} />
   }
 
 

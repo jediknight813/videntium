@@ -32,6 +32,7 @@ function MakeAPost() {
             addPostToUser(file_name)
             makeNewPost(title, image_name, description, file_name)
             navigate('/')
+            navigate("/UserPersonalProfile")
         }
     }
 
