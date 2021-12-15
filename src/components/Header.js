@@ -88,19 +88,6 @@ function Header(Data) {
                     <button className="signup_button"> Sign up </button>
                 </Link>
 
-
-                <div className="make_user_sign_in"> 
-                    <h1 className='make_user_sign_up_text'> Sign up to get your ideas today! </h1>
-
-                    <Link to="/Login">
-                        <button className="force_user_signin_button"> Log in </button>
-                    </Link>
-        
-                    <Link to="/SignUp">
-                        <button className="force_user_login_button"> Sign up </button>
-                    </Link>
-
-                </div> 
             
             </div>
         );

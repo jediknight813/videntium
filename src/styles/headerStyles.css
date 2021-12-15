@@ -499,10 +499,11 @@ visibility: hidden;
 
 .make_user_sign_in {
     position: absolute;
-    top: 110%;
+    left: 0%;
+    top: 8.9%;
     width: 100%;
-    height: 1150%;
-    z-index: 5;
+    height: 100%;
+    z-index: 999 !important;
     opacity: 99%;
     background-color: rgb(34, 31, 31);
     color: tomato;
