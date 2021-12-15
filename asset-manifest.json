@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/videntium/static/css/main.0cfc563b.chunk.css",
-    "main.js": "/videntium/static/js/main.45d995df.chunk.js",
-    "main.js.map": "/videntium/static/js/main.45d995df.chunk.js.map",
+    "main.css": "/videntium/static/css/main.9704fbd6.chunk.css",
+    "main.js": "/videntium/static/js/main.822e4e65.chunk.js",
+    "main.js.map": "/videntium/static/js/main.822e4e65.chunk.js.map",
     "runtime-main.js": "/videntium/static/js/runtime-main.45ad2710.js",
     "runtime-main.js.map": "/videntium/static/js/runtime-main.45ad2710.js.map",
     "static/js/2.18895d26.chunk.js": "/videntium/static/js/2.18895d26.chunk.js",
     "static/js/2.18895d26.chunk.js.map": "/videntium/static/js/2.18895d26.chunk.js.map",
     "index.html": "/videntium/index.html",
-    "static/css/main.0cfc563b.chunk.css.map": "/videntium/static/css/main.0cfc563b.chunk.css.map",
+    "static/css/main.9704fbd6.chunk.css.map": "/videntium/static/css/main.9704fbd6.chunk.css.map",
     "static/js/2.18895d26.chunk.js.LICENSE.txt": "/videntium/static/js/2.18895d26.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.45ad2710.js",
     "static/js/2.18895d26.chunk.js",
-    "static/css/main.0cfc563b.chunk.css",
-    "static/js/main.45d995df.chunk.js"
+    "static/css/main.9704fbd6.chunk.css",
+    "static/js/main.822e4e65.chunk.js"
   ]
 }
