@@ -1,5 +1,5 @@
 import '../styles/headerStyles.css';
-import page_logo from '../images/logo.png'
+import page_logo from '../images/logo.jpg'
 import { Link } from 'react-router-dom';
 import { check_if_user_is_logged_on, download_image, Logout_user_in_firebase, return_current_user_data} from './firebase';
 import React, { useState } from 'react';
@@ -44,7 +44,7 @@ function Header(Data) {
 
         function Logout_user() {
             Logout_user_in_firebase()
-            navigate("/")
+            navigate("/videntium")
             window.location.reload()
         }
 
@@ -58,7 +58,7 @@ function Header(Data) {
         }
 
         function to_front_page() {
-            navigate("/")
+            navigate("/frontPage")
         }
 
         return(
@@ -111,7 +111,7 @@ function Header(Data) {
         <div className="loginHeader_banner"> 
 
             <div className="header_line"> </div>
-            <Link to="/" >
+            <Link to="/frontPage" >
                 <h1 className="logo_text"> Videntium </h1>
             </Link>
 

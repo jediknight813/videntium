@@ -16,7 +16,7 @@ function UserPersonalProfile (Data) {
     const navigate = useNavigate();
     var check = check_if_user_is_logged_on()
     if (check === false) {
-        navigate('/')
+        navigate('/frontPage')
     }
 
     if (Data.data['data'] !== undefined && Data.data['allPosts'] !== undefined) {

@@ -28,7 +28,8 @@ function Main() {
     <BrowserRouter>
       <App data={change_public_user} />
       <Routes>
-          <Route path="" element={<GetAndDisplayFrontPageData data={change_public_user} />} />
+          <Route path="videntium" element={<GetAndDisplayFrontPageData data={change_public_user} />} />
+          <Route path="frontPage" element={<GetAndDisplayFrontPageData data={change_public_user} />} />
           <Route path="Login" element={<LoginUser />} />
           <Route path="signUp" element={<SignUpUser />} />
           <Route path="UserPersonalProfile" element={<GetDataForPersonalProfile data={[public_user, change_public_user]}  />} />

@@ -22,7 +22,7 @@ function LoginUser() {
                 console.log('data not found or incorrect password')
             }
             if (x === true) {
-                navigate('/')
+                navigate('/frontPage')
             }
         }
  

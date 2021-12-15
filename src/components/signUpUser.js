@@ -34,7 +34,7 @@ function SignUpUser() {
             if (check_if_username_is_taken(username) === false) {
             writeUserData(username, password)
             get_user_data(username, password)
-            navigate('/')
+            navigate('/frontPage')
             }
         }
     

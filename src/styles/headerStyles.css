@@ -502,7 +502,7 @@ visibility: hidden;
     top: 110%;
     width: 100%;
     height: 1150%;
-    z-index: 2;
+    z-index: 5;
     opacity: 99%;
     background-color: rgb(34, 31, 31);
     color: tomato;
